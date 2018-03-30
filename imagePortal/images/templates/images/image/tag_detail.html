@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+
+
+{% block title %}Tag {{tag.name}}{% endblock %}
+{% block content %}
+
+
+{% if tag %}
+
+<h2>Tag: {{ tag.name }}</h2>
+{% for image in images %}
+    <ol>
+        <div id="image-list">
+          <a href="{{ image.get_absolute_url }}">
+            {% thumbnail image.image "400x400" crop="100%" as im %}
+              <a href="{{ image.get_absolute_url }}">
+                <img src="{{ im.url }}">
+              </a>
+            {% endthumbnail %}
+          </a>
+        </div>
+</ol>
+{% endfor %}
+{% endif %}
+{% endblock %}

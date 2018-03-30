@@ -1,0 +1,19 @@
+{% load more_like_this %}
+
+
+{% with obj=result.object %}
+<div class="accordion-group">
+    <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse_{{ obj.id }}">
+            {{ obj.user }}
+        </a>
+        <div style="padding: 8px 15px;">
+            <p>Company: {{ obj.title }}</p>
+            <p>Type: {{ obj.description }}</p>
+            {% if obj.image %}<p>Salary: {{ obj.image.get_absolute_url }}</p>{% endif %}
+
+        </div>
+    </div>
+    
+</div>
+{% endwith %}

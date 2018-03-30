@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block title %} Ranking images {% endblock %}
+{% block content %}
+<h1>Ranking top 10 wyswietlen</h1>
+<div id="image-list">
+<ol>
+  {%for image in most_viewed %}
+      {% thumbnail image.image "300x300" crop="100%" as im %}
+      <a href="{{ image.get_absolute_url }}">
+          <img src="{{ im.url }}">
+      </a>
+      {% endthumbnail %}
+
+  {% endfor %}
+</ol>
+</div>
+{% endblock %}
